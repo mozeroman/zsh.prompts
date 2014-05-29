@@ -1,3 +1,11 @@
+# steps install agnoster with zsh-prezto
+1.Install those otf files to enable fonts for the themes
+2.Put prompt_agnoster_setup into both user & root in ~/.zprezto/modules/prompt/functions/
+3.copy indexs in git-omz.zsh & get-short-path.zsh into both ~/.zpreztorc (position doesn't matter, if in another file would be fine too)
+4.logout and restart to enable both fonts & load theme
+5.change 'theme' in ~/.zpreztorc to 'agnoster' if needed
+
+
 # Modified 'agnoster' theme
 
 Modified specifically for use with [Prezto](https://github.com/sorin-ionescu/prezto).
