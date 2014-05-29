@@ -1,6 +1,7 @@
 # function to get the short version of the current path
 # requires PWD_LENGTH variable to be set
 # defaults to 30, if not set
+
 function get_short_path() {
 	HOME_TILDE=~
 	LONG_PATH=`pwd`
@@ -13,9 +14,19 @@ function get_short_path() {
 		export PWD_LENGTH=15
 	fi
 
-    if [ ${#LONG_PATH} -gt $PWD_LENGTH ]; then
-            echo "...${LONG_PATH: -$PWD_LENGTH}"
+    #if [ ${#LONG_PATH} -gt $PWD_LENGTH ]; then
+    #        echo "...${LONG_PATH: -$PWD_LENGTH}"
+    #else
+    #        echo $LONG_PATH
+    #fi
+    local pwd="${PWD/#$HOME/~}"
+
+    if [[ "$pwd" == (#m)[/~] ]]; then
+        _prompt_namor_pwd="$MATCH"
+        unset MATCH
     else
-            echo $LONG_PATH
+        _prompt_namor_pwd="${${${(@j:/:M)${(@s:/:)pwd}##.#?}:h}%/}/${pwd:t}"
     fi
+
+    echo "${_prompt_namor_pwd}$"
 }
