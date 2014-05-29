@@ -81,7 +81,7 @@ prompt_dir_old() {
 }
 
 prompt_dir() {
-  prompt_segment blue black `get_short_path`
+  prompt_segment white black `get_short_path`
 }
 
 # Status:
@@ -125,7 +125,8 @@ build_prompt() {
   RETVAL=$?
   prompt_status
   prompt_time
-  prompt_hostname
+  #prompt_hostname
+  prompt_context
   prompt_dir
   prompt_git
   prompt_end
